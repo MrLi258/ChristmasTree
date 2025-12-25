@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000510; /* Very dark blue */
+    font-family: sans-serif;
+}
+
+#canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #aaddff;
+    font-size: 24px;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 1s;
+}
+
+#audio-ui {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 3;
+    pointer-events: auto;
+    display: none;
+}
+
+#audio-btn {
+    appearance: none;
+    border: 1px solid rgba(170, 221, 255, 0.35);
+    background: rgba(0, 10, 25, 0.55);
+    color: #aaddff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-main {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.btn-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.btn-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    opacity: 0.9;
+}
+
+.btn-icon--click {
+    width: 22px;
+    height: 22px;
+    opacity: 0.95;
+    transform-origin: 70% 30%;
+    animation: btnClickNudge 1.15s ease-in-out infinite;
+}
+
+.btn-icon--click .click-ripple {
+    transform-origin: 18px 6px;
+    animation: btnClickRipple 1.15s ease-out infinite;
+    opacity: 0;
+}
+
+.btn-icon--click .click-ripple:nth-of-type(2) {
+    animation-delay: 0.12s;
+}
+
+@keyframes btnClickNudge {
+    0%, 55%, 100% { transform: translateY(0) scale(1); }
+    70% { transform: translateY(-1px) scale(1.06); }
+    82% { transform: translateY(0px) scale(0.98); }
+}
+
+@keyframes btnClickRipple {
+    0% { opacity: 0; transform: scale(0.75); }
+    60% { opacity: 0; transform: scale(0.75); }
+    70% { opacity: 0.55; transform: scale(0.75); }
+    100% { opacity: 0; transform: scale(1.55); }
+}
+
+#audio-btn:hover {
+    border-color: rgba(170, 221, 255, 0.6);
+    background: rgba(0, 10, 25, 0.7);
+}
+
+#audio-btn:active {
+    transform: translateY(1px);
+}
